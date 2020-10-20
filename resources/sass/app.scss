@@ -1,4 +1,11 @@
+// importare i file delle partizioni scss
+
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+// partials
 @import "partials/variables";
-@import "partials/common";
-@import "partials/main";
 @import "partials/mixins";
+@import "partials/common";
+@import "partials/reset";
+@import "partials/main";
+@import "partials/header";

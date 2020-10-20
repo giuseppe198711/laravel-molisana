@@ -1,4 +1,4 @@
-<?php
+@php
 
 //questo è un formato json
 
@@ -144,7 +144,7 @@
       }
 
     }
-    ?>
+    @endphp
 
 
 <!DOCTYPE html>
@@ -154,53 +154,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 
 <body>
-
+  <!-- header -->
   <header>
-    <img class="logo" src="{{('images/logo-molisana.png')}}" alt="">
+    <div class="logo">
+      <img class="logo" src="{{asset('images/logo-molisana.png')}}" alt="logo">
+    </div>
+    <nav class="main-nav">
+      <ul class="main-nav-list">
+        <li><a href="#">Home</a></li>
+        <li><a class="active" href="#">Prodotti</a></li>
+        <li><a href="#">News</a></li>
+
+      </ul>
+
+    </nav>
+
   </header>
+  <!-- /header -->
+
+    <main>
+
+      @if(!empty($lunga))
+      <h2>Lunga</h2>
+      <ul class="main-list">
+        @foreach ($lunga as $prodotto)
+        <li>
+          <img src="{{$prodotto['src']}}" alt="">
+          <h3>{{$prodotto["titolo"]}}</h3>
+        </li>
+        @endforeach
+      </ul>
+      @endif
+
+      @if(!empty($corta))
+      <h2>Corta</h2>
+      <ul class="main-list">
+        @foreach ($corta as $prodotto)
+        <li>
+          <img src="{{$prodotto['src']}}" alt="">
+          <h3>{{$prodotto["titolo"]}}</h3>
+        </li>
+        @endforeach
+      </ul>
+      @endif
 
 
-    @if(count($lunga) > 0)
+      @if(!empty($cortissima))
+      <h2>Cortissima</h2>
+      <ul class="main-list">
+        @foreach ($cortissima as $prodotto)
+        <li>
+          <img src="{{$prodotto['src']}}" alt="">
+          <h3>{{$prodotto["titolo"]}}</h3>
+        </li>
+        @endforeach
+      </ul>
+      @endif
 
-    <h2>Lunga</h2>
-    <ul class="main-list">
-      @foreach ($lunga as $prodotto)
-      <li>
-        <img src="{{$prodotto['src']}}" alt="">
-        <h3>{{$prodotto["titolo"]}}</h3>
-      </li>
-      @endforeach
-    </ul>
-    @endif
+    </main>
 
-    @if(count($corta) > 0)
-    <h2>Corta</h2>
-    <ul class="main-list">
-      @foreach ($corta as $prodotto)
-      <li>
-        <img src="{{$prodotto['src']}}" alt="">
-        <h3>{{$prodotto["titolo"]}}</h3>
-      </li>
-      @endforeach
-    </ul>
-    @endif
-
-
-    @if(count($cortissima) > 0)
-    <h2>Cortissima</h2>
-    <ul class="main-list">
-      @foreach ($cortissima as $prodotto)
-      <li>
-        <img src="{{$prodotto['src']}}" alt="">
-        <h3>{{$prodotto["titolo"]}}</h3>
-      </li>
-      @endforeach
-    </ul>
-    @endif
-
+    <script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>
