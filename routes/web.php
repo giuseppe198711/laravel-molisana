@@ -15,12 +15,37 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/home', function () {
     return view('home');
-});
+})->name("home");
 
 Route::get('/prodotti', function () {
-    return view('prodotti');
-});
+
+  $data = config('pasta');
+
+  $paste = [];
+
+  foreach ($data as $key => $prodotto) {
+    // stiamo aggiungendo la chiave id ai singoli prodotti
+    $prodotto["id"] = $key;
+    // stiamo creando all'interno dell'array paste vari array che
+    // indicano i tipi di pasta e riempiamo questi ultimi con i tipi
+    // di pasta corretti
+    $paste[$prodotto["tipo"]][] = $prodotto;
+  }
+
+    return view('prodotti', $data);
+
+})->name("pasta");
 
 Route::get('/news', function () {
     return view('news');
-});
+})->name("notizie"); // questo passaggio |->name("notizie")| ci permette di creare
+                    // un alias che potremmo cambiare all'occorrenza quando decideremo
+                     // un giono di cambiare nome in questo caso alle 'news' e vale anche
+                     // per le altre sezioni che sono sopra
+
+
+Route::get('/prodotti/show/{id}', function ($id) {
+
+  $pasta = config("pasta.$id");
+   return view('prodotto-singolo', ['pasta' => $pasta]);
+})->name("prodotto-singolo");
