@@ -16,6 +16,7 @@ li {
 
 .container-image {
   background-image: url("/images/fondo-pag-speciali.jpg");
+  padding-left: 110px;
 }
 
 .main-list {
@@ -38,6 +39,61 @@ li {
   width: 100%;
 }
 
+.wrapper_prodotti_singoli {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.wrapper_prodotti_singoli .wrapper_titolo h1 {
+  color: #002D73;
+}
+
+.wrapper_prodotti_singoli img {
+  width: 100%;
+  display: block;
+}
+
+.wrapper_prodotti_singoli .angle {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper_descrizione {
+  background-color: #B8DAE4;
+}
+
+.wrapper_descrizione .descrizione_pasta {
+  width: 80%;
+  margin: auto;
+  color: #002D73;
+}
+
+.wrapper_info {
+  width: 80%;
+  margin: auto;
+  display: flex;
+}
+
+.wrapper_info .logo_info,
+.wrapper_info .pastificio_prodotti,
+.wrapper_info .collezione_da_chef {
+  padding-right: 50px;
+}
+
+.wrapper_info .logo_info h3,
+.wrapper_info .pastificio_prodotti h3,
+.wrapper_info .collezione_da_chef h3 {
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
 .layover {
   background-color: lightblue;
   opacity: 0.3;
@@ -54,6 +110,14 @@ li {
 
 .layover .icon {
   width: 20px;
+}
+
+.img_footer {
+  width: 100%;
+}
+
+.img_footer img {
+  width: 100%;
 }
 
 header .logo {

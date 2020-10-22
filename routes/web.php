@@ -31,7 +31,6 @@ Route::get('/prodotti', function () {
     // di pasta corretti
     $paste[$prodotto["tipo"]][] = $prodotto;
   }
-
     return view('prodotti', $data);
 
 })->name("pasta");
@@ -46,6 +45,11 @@ Route::get('/news', function () {
 
 Route::get('/prodotti/show/{id}', function ($id) {
 
+  if(config("pasta.$id") == null) {
+    abort(404);
+  }
+
   $pasta = config("pasta.$id");
-   return view('prodotto-singolo', ['pasta' => $pasta]);
-})->name("prodotto-singolo");
+   return view('prodotto-singolo', ['pasta' => $pasta, "id"=>$id]);
+
+})->where('id', '[0-9]+')->name("prodotto-singolo");
